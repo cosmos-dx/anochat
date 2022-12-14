@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bankist - Homepage</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <script defer src="/script.js"></script>
+  </head>
+  <body>
+    <header class="header-section">
+      <span class="logo"> <%= root %></span>
+      <p class="headline"><%- info %></p>
+    </header>
+    <main class="form-section">
+      <div class="login-text">Ano Name</div>
+      <form class="form" action = '/msg' method="get">
+        <div class="input-section">
+          <input
+            autocomplete="off"
+            placeholder="Username"
+            type="text"
+            id="username"
+            name = "username"
+          />
+          <div class="bottom-border"></div>
+        </div>
+        <div class="input-section">
+          <div class="bottom-border"></div>
+        </div>
+        <div class="btn">
+          <input id = "butts" type="submit" value = "Login">
+          <!-- <button>Login</button> -->
+        </div>
+      </form>
+      <%- showchat %>
+      <!-- <form action="/hello" method = "GET">
+        <div class="btn">
+          <input id = "butts" type="submit" value = "Show My chats">
+        </div>
+      </form> -->
+      <form action="/createsession" method = "POST">
+        <div class="btn">
+          <input id = "butts" type="submit" name = "uname" value = "I want to chat">
+        </div>
+      </form>
+    </main>
+    <footer class="footer-section">&copy; behappy 2022 - 2023</footer>
+  </body>
+</html>
