@@ -13,6 +13,10 @@ mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://127.0.0.1:27017/userids");
 var useridname;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cookieParser());
 
 const chatroomRouter = require("./routes/chatroomRoute");
 const sessionRouter = require("./routes/sessionRoute");
@@ -27,14 +31,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 app.use(express.static('public'));
 app.set('view engine', 'ejs')
 
-app.use(cookieParser());
 app.use(
   expressSession({
     secret: "thisismysecretkey34erwe",
@@ -69,6 +70,7 @@ app.get("/msg", async (req, res) => {
   useridname = req.query.username;
   //console.log(" =====", useridname);
   if(req.cookies['username']){
+    // console.log(req, req.cookies);
     greet = "Hello " + req.cookies['username'];
     var pageinfo = getpage(greet, "No need of register again");
     res.render('home', {root: pageinfo['greet'], info: pageinfo['info'], showchat: pageinfo['frmshwbtn'] });

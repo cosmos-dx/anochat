@@ -1,6 +1,9 @@
 const chatroomRoute = require("express").Router();
 const userModel = require("../model/User");
 const chatModel = require("../model/chatModel");
+
+
+
 chatroomRoute.get("/:id", async (req, res) => {
   console.log(req.cookies);
   const id = req.params.id;
